@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian School Al Seeb</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#060a13;color:#c8d6e5;overflow-x:hidden}
+
+/* ========== BACKGROUND PAGE ========== */
+.page{position:relative;z-index:1;min-height:300vh}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:0 3rem;height:60px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,10,19,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(30,42,58,.5)}
+nav .logo{display:flex;align-items:center;gap:10px}
+nav .logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#1746a2,#7c3aed);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+nav .logo-text{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;color:#f1f5f9}
+nav .logo-text span{color:#818cf8;font-weight:600}
+nav ul{list-style:none;display:flex;gap:2rem}
+nav ul li a{color:#64748b;text-decoration:none;font-size:.82rem;font-weight:500;transition:color .2s}
+nav ul li a:hover{color:#c7d2fe}
+nav .nav-badge{background:linear-gradient(135deg,#1746a2,#7c3aed);color:#fff;font-size:.7rem;font-weight:600;padding:6px 16px;border-radius:20px;text-decoration:none;transition:transform .2s}
+nav .nav-badge:hover{transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(99,102,241,.12) 0%,rgba(23,70,162,.06) 40%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,#060a13,transparent);pointer-events:none;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2);border-radius:99px;padding:6px 18px;font-size:.75rem;color:#a5b4fc;margin-bottom:1.5rem;animation:fadeUp .8s ease-out}
+.hero-badge .pulse{width:8px;height:8px;background:#34d399;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;color:#f1f5f9;line-height:1.1;letter-spacing:-.03em;max-width:700px;animation:fadeUp .8s ease-out .1s both}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#818cf8,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.05rem;color:#64748b;max-width:500px;margin-top:1.2rem;line-height:1.7;font-weight:300;animation:fadeUp .8s ease-out .2s both}
+.hero-stats{display:flex;gap:3rem;margin-top:2.5rem;animation:fadeUp .8s ease-out .3s both}
+.hero-stats .stat{text-align:center}
+.hero-stats .stat .num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:#818cf8}
+.hero-stats .stat .label{font-size:.7rem;color:#475569;margin-top:.2rem;text-transform:uppercase;letter-spacing:.08em}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTIONS */
+section{padding:5rem 3rem}
+.section-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#818cf8;font-weight:600;margin-bottom:.6rem}
+.section-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#f1f5f9;margin-bottom:2rem}
+
+/* CARDS GRID */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.card{background:linear-gradient(160deg,#0c1222 0%,#0a0f1c 100%);border:1px solid #1a2540;border-radius:16px;padding:1.6rem;transition:all .3s}
+.card:hover{border-color:rgba(99,102,241,.3);transform:translateY(-4px);box-shadow:0 12px 40px rgba(99,102,241,.08)}
+.card-icon{width:44px;height:44px;background:rgba(99,102,241,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
+.card h3{font-size:.95rem;font-weight:600;color:#e2e8f0;margin-bottom:.5rem}
+.card p{font-size:.8rem;color:#64748b;line-height:1.6;font-weight:300}
+
+/* ACHIEVEMENTS BANNER */
+.achievements{background:linear-gradient(135deg,rgba(23,70,162,.15) 0%,rgba(124,58,237,.1) 100%);border-top:1px solid #1a2540;border-bottom:1px solid #1a2540;padding:3rem;display:flex;gap:2rem;align-items:center;overflow:hidden}
+.achievements .trophy{font-size:3rem;flex-shrink:0}
+.achievements .content h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:#f1f5f9;margin-bottom:.5rem}
+.achievements .content p{font-size:.82rem;color:#94a3b8;line-height:1.6}
+.achievements .tags{display:flex;gap:.5rem;margin-top:.8rem;flex-wrap:wrap}
+.achievements .tag{background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.2);color:#a5b4fc;font-size:.68rem;padding:4px 12px;border-radius:99px}
+
+/* CIRCULARS */
+.circular-list{display:flex;flex-direction:column;gap:.6rem}
+.circular-item{display:flex;align-items:center;gap:1rem;background:#0c1222;border:1px solid #1a2540;border-radius:12px;padding:1rem 1.2rem;transition:border-color .2s}
+.circular-item:hover{border-color:rgba(99,102,241,.3)}
+.circular-date{font-size:.7rem;color:#818cf8;font-weight:600;white-space:nowrap;min-width:70px}
+.circular-text{font-size:.82rem;color:#94a3b8}
+
+/* FOOTER */
+.page-footer{padding:3rem;text-align:center;border-top:1px solid #1a2540}
+.page-footer p{font-size:.75rem;color:#374151}
+.page-footer a{color:#818cf8;text-decoration:none}
+
+/* ========== CHAT WIDGET ========== */
+.bubble{position:fixed;bottom:28px;right:28px;width:60px;height:60px;background:linear-gradient(135deg,#1746a2,#7c3aed);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 30px rgba(99,102,241,.45);z-index:1000;transition:transform .2s}
+.bubble:hover{transform:scale(1.1)}
+.bubble svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:2}
+.bubble .close-x{display:none;color:#fff;font-size:1.5rem;font-weight:700;line-height:1}
+.bubble.open svg.chat-icon{display:none}
+.bubble.open .close-x{display:block}
+
+.widget{position:fixed;bottom:100px;right:28px;width:400px;max-height:70vh;background:#0f1623;border:1px solid #1e2a3a;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 1px rgba(99,102,241,.08);display:none;flex-direction:column;z-index:999;transform-origin:bottom right}
+.widget.open{display:flex;animation:pop-in .4s cubic-bezier(.16,1,.3,1)}
+@keyframes pop-in{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.widget.closing{animation:pop-out .25s ease-in forwards}
+@keyframes pop-out{to{opacity:0;transform:scale(.85) translateY(20px)}}
+.w-header{background:linear-gradient(135deg,#1746a2 0%,#5b21b6 50%,#7c3aed 100%);padding:1rem 1.2rem;position:relative;overflow:hidden;flex-shrink:0}
+.w-header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.07) 0%,transparent 60%)}
+.w-header h1{font-size:1.1rem;font-weight:700;color:#fff;position:relative;z-index:1}
+.w-header p{font-size:.72rem;color:rgba(255,255,255,.55);margin-top:.1rem;position:relative;z-index:1}
+.dot{display:inline-block;width:7px;height:7px;background:#34d399;border-radius:50%;margin-right:5px;animation:pulse 2s infinite}
+
+.chat{flex:1;overflow-y:auto;padding:.7rem;display:flex;flex-direction:column;gap:.35rem;scrollbar-width:thin;scrollbar-color:#1f2937 transparent}
+.chat::-webkit-scrollbar{width:4px}
+.chat::-webkit-scrollbar-thumb{background:#1f2937;border-radius:10px}
+.msg{max-width:88%;padding:.55rem .85rem;border-radius:16px;font-size:.8rem;line-height:1.5;animation:msg-in .3s cubic-bezier(.16,1,.3,1)}
+@keyframes msg-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.msg.bot{background:#111827;border:1px solid #1e2a3a;align-self:flex-start;color:#d1d5db}
+.msg.user{background:linear-gradient(135deg,#1746a2,#6366f1);align-self:flex-end;color:#fff}
+.msg strong{color:#f1f5f9}
+.msg a{color:#93c5fd;text-decoration:none}
+.typing-indicator{align-self:flex-start;background:#111827;border:1px solid #1e2a3a;border-radius:16px;padding:.45rem .85rem;display:none;gap:5px;align-items:center}
+.typing-indicator span{width:5px;height:5px;background:#6366f1;border-radius:50%;animation:bdot 1.4s infinite}
+.typing-indicator span:nth-child(2){animation-delay:.2s}
+.typing-indicator span:nth-child(3){animation-delay:.4s}
+@keyframes bdot{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+.quick{display:flex;flex-wrap:wrap;gap:5px;padding:.1rem .7rem .4rem;flex-shrink:0}
+.quick button{background:#0f1623;border:1px solid #253046;color:#94a3b8;font-family:'DM Sans';font-size:.7rem;padding:4px 11px;border-radius:20px;cursor:pointer;transition:all .25s}
+.quick button:hover{border-color:#6366f1;background:#1e1b4b;color:#c7d2fe;transform:translateY(-1px)}
+.input-area{padding:.5rem .7rem;border-top:1px solid #1e2a3a;display:flex;gap:7px;background:#0c1220;flex-shrink:0}
+.input-area input{flex:1;background:#111827;border:1px solid #253046;border-radius:14px;padding:.5rem .8rem;color:#e5e7eb;font-family:'DM Sans';font-size:.8rem;outline:none;transition:border .2s}
+.input-area input:focus{border-color:#6366f1}
+.input-area input::placeholder{color:#4b5563}
+.send-btn{background:linear-gradient(135deg,#1746a2,#7c3aed);border:none;border-radius:12px;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.send-btn:hover{transform:scale(1.08)}
+.send-btn svg{width:16px;height:16px}
+.w-footer{text-align:center;padding:.3rem;font-size:.58rem;color:#374151;flex-shrink:0}
+
+@media(max-width:768px){
+  .cards{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+  section{padding:3rem 1.5rem}
+  nav{padding:0 1.5rem}
+  nav ul{display:none}
+  .widget{width:calc(100vw - 20px);right:10px;bottom:90px;max-height:75vh}
+  .bubble{bottom:20px;right:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== SCHOOL WEBSITE ========== -->
+<div class="page">
+
+<nav>
+  <div class="logo">
+    <div class="logo-icon">&#127891;</div>
+    <div class="logo-text">Indian School <span>Al Seeb</span></div>
+  </div>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Academics</a></li>
+    <li><a href="#">Admissions</a></li>
+    <li><a href="#">Media</a></li>
+  </ul>
+  <a href="#" class="nav-badge">Apply 2026-27</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge"><span class="pulse"></span> Silver Jubilee Year 2026</div>
+  <h1>Where Dreams Unfold Into <em>Reality</em></h1>
+  <p>Every child is a possible winner. CBSE-affiliated excellence in Seeb, Muscat, Sultanate of Oman since 2002.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="num">25</div><div class="label">Years</div></div>
+    <div class="stat"><div class="num">XII</div><div class="label">Classes</div></div>
+    <div class="stat"><div class="num">CBSE</div><div class="label">Board</div></div>
+  </div>
+</div>
+
+<section>
+  <div class="section-label">Explore</div>
+  <div class="section-title">What Makes ISAS Special</div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">&#128218;</div>
+      <h3>CBSE Curriculum</h3>
+      <p>KG I through Class XII with Science, Commerce & Humanities streams. Rigorous academics with holistic development.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#127942;</div>
+      <h3>National Champions</h3>
+      <p>CBSE National Winners 2025 in Hockey, Cricket & Chess. Our students compete and win at the highest level.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#127760;</div>
+      <h3>ISOVLE Platform</h3>
+      <p>Integrated online learning through our virtual environment. Access resources, worksheets, and more anytime.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#128100;</div>
+      <h3>Expert Faculty</h3>
+      <p>Dedicated teaching staff across all subjects with years of experience in CBSE education and student mentoring.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#127891;</div>
+      <h3>Silver Jubilee</h3>
+      <p>Celebrating 25 years of academic excellence. Alumni Rendezvous and special events throughout 2026.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">&#128652;</div>
+      <h3>Transport & Facilities</h3>
+      <p>School bus routes across Muscat, infirmary with trained staff, IT labs, and modern classrooms.</p>
+    </div>
+  </div>
+</section>
+
+<div class="achievements">
+  <div class="trophy">&#127942;</div>
+  <div class="content">
+    <h3>CBSE National Champions 2025</h3>
+    <p>Proud of our Hockey, Cricket & Chess teams for bringing home national titles! Velavaa Ragavesh won Gold at the 69th SGFI National Chess Championship.</p>
+    <div class="tags">
+      <span class="tag">Hockey Champions</span>
+      <span class="tag">Cricket Champions</span>
+      <span class="tag">Chess Champions</span>
+      <span class="tag">SGFI Gold</span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="section-label">Updates</div>
+  <div class="section-title">Latest Circulars</div>
+  <div class="circular-list">
+    <div class="circular-item"><span class="circular-date">28 Apr</span><span class="circular-text">Class IX &#8211; Accommodations and Exemptions by CBSE</span></div>
+    <div class="circular-item"><span class="circular-date">23 Apr</span><span class="circular-text">Classes I to V &#8211; National Technology Day Competitions</span></div>
+    <div class="circular-item"><span class="circular-date">22 Apr</span><span class="circular-text">Classes IX to XII &#8211; Parent Orientation Programme</span></div>
+    <div class="circular-item"><span class="circular-date">21 Apr</span><span class="circular-text">Classes VI to VIII &#8211; Parent Orientation Programme</span></div>
+    <div class="circular-item"><span class="circular-date">28 Apr</span><span class="circular-text">Class KG III &#8211; Book Sale</span></div>
+  </div>
+</section>
+
+<div class="page-footer">
+  <p>Indian School Al Seeb &#183; PO Box 2445, PC 111, Seeb, Oman &#183; +968 24451424 &#183; <a href="https://www.indianschoolseeb.com">indianschoolseeb.com</a></p>
+  <p style="margin-top:.5rem;color:#1f2937">ISAS School Chatbot Project &#183; Not an official website</p>
+</div>
+
+</div>
+
+<!-- ========== CHAT WIDGET ========== -->
+<div class="bubble" id="bubble" onclick="toggleWidget()">
+  <svg class="chat-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <span class="close-x">&#215;</span>
+</div>
+
+<div class="widget" id="widget">
+  <div class="w-header">
+    <h1>&#127891; ISAS Assistant</h1>
+    <p><span class="dot"></span>Online &#183; Ask me anything</p>
+  </div>
+  <div class="chat" id="chat">
+    <div class="msg bot">Hello! &#128075; I'm the ISAS Assistant. Ask me anything about Indian School Al Seeb!</div>
+  </div>
+  <div class="typing-indicator" id="typing"><span></span><span></span><span></span></div>
+  <div class="quick" id="quickBtns">
+    <button onclick="ask(this.textContent)">Admission procedure?</button>
+    <button onclick="ask(this.textContent)">Contact info</button>
+    <button onclick="ask(this.textContent)">Teachers</button>
+    <button onclick="ask(this.textContent)">Sports achievements</button>
+    <button onclick="ask(this.textContent)">School timings?</button>
+    <button onclick="ask(this.textContent)">Documents needed?</button>
+  </div>
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Ask me anything..." onkeypress="if(event.key==='Enter')send()">
+    <button class="send-btn" onclick="send()"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+  </div>
+  <div class="w-footer">ISAS Assistant &#183; Silver Jubilee 2026</div>
+</div>
+
+<script>
+var chat=document.getElementById('chat'),typing=document.getElementById('typing'),widget=document.getElementById('widget'),bubble=document.getElementById('bubble');
+function toggleWidget(){
+  if(widget.classList.contains('open')){widget.classList.add('closing');setTimeout(function(){widget.classList.remove('open','closing');bubble.classList.remove('open');},250);}
+  else{widget.classList.add('open');bubble.classList.add('open');document.getElementById('userInput').focus();}
+}
+var D={
+hello:{kw:["hello","hi","hey","good morning","good afternoon","good evening","namaste","salam","hii","hola","howdy","yo","sup"],a:"Hello! &#128075; Welcome to the ISAS Assistant &#8212; ask me anything!"},
+reaction:{kw:["nice","cool","great","awesome","wow","good","okay","ok","oh","interesting","amazing","perfect","wonderful","excellent","fantastic","super","neat","love it","thats great","got it","understood","i see","alright","sure","really","oh ok","hmm","hm","ohh","ahhh","noice","damn","yay","yep","yes","no way","lol","haha","right"],a:"Glad you think so! &#128522; Ask me anything else about ISAS!"},
+thank:{kw:["thank","thanks","thank you","bye","goodbye","see you","ok thanks","bye bye","cya","later","tata"],a:"You're welcome! &#128522; Have a great day!<br>&#127760; <a href='https://www.indianschoolseeb.com'>indianschoolseeb.com</a> &#183; &#128222; +968 24451424"},
+principal:{kw:["principal","alex","joseph","head of school","leader"],a:"The Principal is <strong>Mr. Alex C Joseph</strong>.<br><br><em>&#8220;Every child is a possible winner.&#8221;</em><br>&#9993; principal@indianschoolseeb.com"},
+teachers:{kw:["teacher","teachers","who teaches","faculty","subject teacher","teaching staff"],a:"<strong>Subject Teachers:</strong><br>&#8226; Math &#8212; Mrs Annapurna<br>&#8226; Chemistry &#8212; Mrs Nisha<br>&#8226; Physics &#8212; Mr Madhusoodanan<br>&#8226; English &#8212; Mrs Shamla<br>&#8226; CS &#8212; Mrs Shelmi<br><br><strong>Principal:</strong> Mr. Alex C Joseph"},
+math:{kw:["math","maths","mathematics","annapurna","math teacher","teaches math"],a:"Maths: <strong>Mrs Annapurna</strong>. CBSE curriculum, I to XII."},
+chemistry:{kw:["chemistry","chem","nisha","chemistry teacher","teaches chemistry"],a:"Chemistry: <strong>Mrs Nisha</strong>. Science stream, XI&#8211;XII."},
+physics:{kw:["physics","madhusoodanan","physics teacher","teaches physics"],a:"Physics: <strong>Mr Madhusoodanan</strong>. Science stream, XI&#8211;XII."},
+english:{kw:["english","shamla","english teacher","teaches english"],a:"English: <strong>Mrs Shamla</strong>. Core subject, KG I to XII."},
+cs:{kw:["computer science","cs","coding","programming","shelmi","teaches computer","cs teacher"],a:"CS: <strong>Mrs Shelmi</strong>. Senior classes, CBSE curriculum."},
+contact:{kw:["contact","phone","email","call","reach","number","address","location","where"],a:"&#128222; <strong>+968 24451424</strong><br>&#9993; info@indianschoolseeb.com<br>&#128205; PO Box 2445, Seeb, Oman<br>&#127760; <a href='https://www.indianschoolseeb.com'>Website</a>"},
+admission:{kw:["admission","admit","enroll","enrol","register","registration","join","apply","application","new student"],a:"Register at <strong>indianschoolsoman.com</strong> (20 Jan &#8211; 20 Feb 2026). Fee: OMR 15.<br><br>9 Steps: Register &#8594; BOD &#8594; SMS &#8594; Docs &#8594; Verify &#8594; Approval &#8594; GR No. &#8594; Pay &#8594; Done!<br><a href='https://indianschoolsoman.com/our-services/admission-2026-27/'>Apply here</a>"},
+documents_kg1:{kw:["document kg1","documents kg 1","kg1","kg i","kindergarten 1","documents for kg1","kg 1"],a:"<strong>KG I:</strong> Birth cert, passport, resident card, health card, photo, NOC (other nationalities)."},
+documents_kg2:{kw:["document kg2","documents kg 2","kg2","kg ii","kindergarten 2"],a:"<strong>KG II:</strong> All KG I docs + Transfer Certificate + report card."},
+documents:{kw:["document","papers","required","need to bring","tc","transfer certificate","what do i need"],a:"<strong>Classes I&#8211;IX:</strong> Birth cert, passport, resident card, TC, report card, photo.<br>Ask about KG1/KG2 for specifics."},
+fees:{kw:["fee","fees","cost","price","payment","pay","money","how much","tuition","charges"],a:"Admission: <strong>OMR 15</strong>. <a href='https://www.indianschoolseeb.com/fee-structure/'>Full fee structure</a>"},
+uniform:{kw:["uniform","dress","dress code","what to wear","clothes","school uniform","wear"],a:"Official ISAS uniform required. <a href='https://www.indianschoolseeb.com/uniform/'>Details</a>"},
+transport:{kw:["bus","transport","pick up","drop","travel","van","ride","school bus"],a:"Bus transport across Muscat. <a href='https://www.indianschoolseeb.com/transport/'>Routes</a> &#183; &#128222; +968 24451424"},
+timing:{kw:["timing","time","schedule","hours","when","open","start","end","clock"],a:"<strong>7:00 AM &#8211; 1:30 PM</strong> (approx). May vary for KG/senior."},
+academics:{kw:["academic","curriculum","cbse","syllabus","subjects","which board","board","structure","stream","classes offered","classes"],a:"<strong>CBSE:</strong> KG I&#8211;III, Primary I&#8211;V, Middle VI&#8211;VIII, Secondary IX&#8211;X, Senior XI&#8211;XII.<br>Streams: Science, Commerce, Humanities"},
+exam:{kw:["exam","test","assessment","marks","result","grade","report card","board exam"],a:"I&#8211;VIII: Internal assessments. X & XII: CBSE Board Exams. Unit tests each term."},
+management:{kw:["management","smc","committee","president","treasurer","who runs"],a:"<strong>SMC:</strong><br>&#8226; President: Mr. Susanth Sukumaran (99852515)<br>&#8226; VP: Mr. Mohammed Abdul Jabbar<br>&#8226; Treasurer: Mr. Moidu Achar<br>&#8226; IT: Mr. Ramaswamy (93219984)"},
+staff:{kw:["staff","admin staff","administration","office staff","employee","who works","non-teaching","operations manager","manager"],a:"20+ admin staff, 5 teachers. Key: Anilkumar Nair (Ops), Geenamol Anish (Nurse). <a href='https://www.indianschoolseeb.com/staff/'>Full list</a>"},
+sports:{kw:["sport","sports","game","cricket","hockey","chess","football","badminton","table tennis","tournament","athletics","achievement","award","winner","champion","trophy"],a:"&#127942; <strong>2025 Champions:</strong> Hockey, Cricket, Chess!<br>&#8226; U-19 Cricket &#8212; Silver<br>&#8226; U-17 Girls Cricket &#8212; Bronze<br>&#8226; Velavaa Ragavesh &#8212; SGFI Chess Gold"},
+silver:{kw:["silver jubilee","25 years","anniversary","celebration","founded","established","history","alumni"],a:"&#127881; <strong>25 Years!</strong> Est. 2002. Celebration: 25 April 2026. <a href='https://www.indianschoolseeb.com/silver_jubilee/'>More</a>"},
+circulars:{kw:["circular","notice","announcement","latest","news","update","event"],a:"<strong>Apr 2026:</strong> CBSE Accommodations, Parent Orientations, Technology Day, Book Sale. <a href='https://www.indianschoolseeb.com/latest-circulars/'>View all</a>"},
+isovle:{kw:["isovle","online learning","e-learning","virtual","online class","virtual learning"],a:"<strong>ISOVLE</strong> &#8212; <a href='https://seeb.isovle.net/'>seeb.isovle.net</a><br>IT: Mr. Ramaswamy (93219984)"},
+website:{kw:["website","site","link","url","portal","school website","web address"],a:"&#127760; <a href='https://www.indianschoolseeb.com'>Website</a> &#183; <a href='https://seeb.isovle.net/'>ISOVLE</a> &#183; <a href='https://www.youtube.com/channel/UCtRnPwQQaR9TR4dl9j_Z5nQ'>YouTube</a>"},
+health:{kw:["health","nurse","first aid","infirmary","medical","sick","doctor","school nurse"],a:"Infirmary: Geenamol Anish (17 yrs), Zawan Al Wahibi, Fatihya Al Zarafi."},
+it:{kw:["wifi","login","password","tech support"],a:"IT: Mr. Ramaswamy (93219984), Mrs. Aamal, Mr. Gokul. &#9993; smc.it@indianschoolseeb.com"},
+general:{kw:["isas","about isas","about the school","tell me about","indian school","about indian"],a:"<strong>ISAS</strong> &#8212; CBSE school, est. 2002, KG I to XII, Seeb, Oman. <a href='https://www.indianschoolseeb.com'>Website</a>"}
+};
+function find(q){var ql=q.toLowerCase(),best=null,bs=0;for(var k in D){var v=D[k],s=0;for(var i=0;i<v.kw.length;i++){if(ql.indexOf(v.kw[i])!==-1)s+=v.kw[i].length;}if(s>bs){bs=s;best=v;}}return best?best.a:"Not sure about that &#8212; try <strong>admissions</strong>, <strong>teachers</strong>, <strong>sports</strong>, <strong>fees</strong>, or <strong>contact</strong>!";}
+function addMsg(h,u){var d=document.createElement('div');d.className='msg '+(u?'user':'bot');d.innerHTML=h;chat.appendChild(d);chat.scrollTop=chat.scrollHeight;}
+function reply(q){typing.style.display='flex';chat.appendChild(typing);chat.scrollTop=chat.scrollHeight;setTimeout(function(){typing.style.display='none';addMsg(find(q),false);},700);}
+function ask(q){document.getElementById('quickBtns').style.display='none';addMsg(q,true);reply(q);}
+function send(){var inp=document.getElementById('userInput'),q=inp.value.trim();if(!q)return;inp.value='';document.getElementById('quickBtns').style.display='none';addMsg(q,true);reply(q);}
+</script>
+</body>
+</html>
